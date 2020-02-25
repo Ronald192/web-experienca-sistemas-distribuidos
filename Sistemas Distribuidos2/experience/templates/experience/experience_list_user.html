@@ -1,0 +1,38 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Experiencias{% endblock %}
+{% block content %}
+{% include  'experience/includes/experiences_menu.html' %}
+<main role="main">
+    <div class="container mb-4">
+
+
+        {% for experience in experience_list %}
+        {% if experience.user.username == request.user.username %}
+
+        <div class="row mt-3" style="background: white;border-radius: 20px; ">
+            <div class="col-3">
+                <img src="{{experience.image.url}}" class="rounded-circle" width="230" height="230">
+            </div>
+            <div class="col-9">
+                <div class="text-center">
+                    {{experience.title}}
+                </div>
+                {{experience.content|striptags|safe|truncatechars:"200"}} <br>
+                <div class="float-right">
+                    {{experience.user.username | capfirst}}, {{experience.created}}
+                </div>
+                {% if request.user == experience.user %}
+                | <a href="{% url 'experience:update' experience.id %}">Editar</a>
+                | <a href="{% url 'experience:delete' experience.id %}">Borrar</a>
+                {% endif %}
+            </div>
+        </div>
+
+        {% endif %}
+        {% endfor %}
+
+
+    </div>
+</main>
+{% endblock %}

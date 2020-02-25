@@ -1,0 +1,62 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Experiencias{% endblock %}
+{% block content %}
+{% include  'experience/includes/experiences_menu.html' %}
+<main role="main">
+    <div class="container mb-4">
+
+        <div class="container" style="width:600px; margin-top:5px;">
+            <div class="row">
+                <div class="col-md-12 search">
+                    <form method="get">
+                        <div id="custom-search-input">
+                            <div class="input-group col-md-12"
+                                 style="align-items:center; justify-content:space-between;">
+                                <div>
+                                    <input type="text" class="form-control" placeholder="Buscar..." name="buscar"
+                                           value="{{ request.GET.buscar}}" style="width:400px;">
+                                </div>
+                                <div>
+                <span class="input-group-list">
+                  <i class="icon icon-search"></i>
+                    <button type="submit" class="">Buscar</button>
+                </span>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+        {% for experience in experience_list %}
+        <div class="row mt-3" style="background: white;border-radius: 20px; ">
+            <div class="col-3">
+                <img src="{{experience.image.url}}" class="rounded-circle" width="230" height="230">
+            </div>
+            <div class="col-9">
+                <div class="text-center">
+                    {{experience.title}}
+                </div>
+                {{experience.content|striptags|safe|truncatechars:"200"}} <br>
+                <div class="float-right">
+                    {{experience.user.username | capfirst}}, {{experience.created}}
+                </div>
+                {% if request.user == experience.user %}
+                | <a href="{% url 'experience:update' experience.id %}">Editar</a>
+                | <a href="{% url 'experience:delete' experience.id %}">Borrar</a>
+                {% endif %}
+                <p><a href="{% url 'experience:experience' experience.id experience.title|slugify %}"> Ver
+                    Contenido </a></p>
+                <div class="float-right">
+                    <p style="color=#000FFF;">{{experience.likes.count | capfirst}} Me Gusta</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+</main>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'core/base.html' %}
+
+{% load static %}
+
+{% block title %}Inicio{% endblock %}
+
+{% block content %}
+
+<!-- Cabecera -->
+
+<!-- Mensaje -->
+<section class="page-section cta">
+    <div class="container">
+        <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="{% static 'core/img/intro.jpg' %}" alt="">
+        <div class="row" style="margin-top: -200px">
+            <div class="col-xl-9 mx-auto">
+                <div class="cta-inner text-center rounded">
+                    <h2 class="section-heading mb-4">
+                        <span class="section-heading-lower">Conoce el Perú</span>
+                        <span class="section-heading-upper">Te Gustará</span>
+                    </h2>
+                    <p class="mb-0">El país de todas las sangres. Su origen andino y la mirada inca de los Cuatro Suyos,
+                        se confrontó con el espíritu conquistador y colonizador español; y aún cuando el sometimiento
+                        fue el primer resultado, esta fusión inevitable derivó en una nueva identidad del Perú,
+                        compleja, llena de contradicciones que son el resultado de principios de vida y valores
+                        disímiles. Las circunstancias añadieron a esta fusión otros elementos con nuevas complejidades.
+                        El espíritu y los valores orientales, la alegría y laboriosidad africana, la vida y costumbres
+                        italianas, francesas, japonesas, alemanas. Todos formaron lo que es hoy la identidad peruana,
+                        rica, diversa, de raíces andinas con fuerte influencia foránea.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

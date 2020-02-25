@@ -1,0 +1,63 @@
+{% extends 'core/base.html' %}
+
+{% load static %}
+
+{% block title %}Promociones{% endblock %}
+
+{% block content %}
+
+<link href="{% static 'core/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+
+<nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="nav-lista">
+    <div class="container">
+        <a class="navbar-brand text-uppercase text-expanded font-weight-bold d-lg-none" href="index.html">VALORES DE MI
+            PERÚ</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+</nav>
+{% if prom %}
+
+{% else %}
+<div>
+    {% for promotion in promotions %}
+    <div class="container-info" style="">
+        <div class="row">
+            <div class="col-xl-9 mx-auto" style="margin-top:10px;margin-bottom: 10px;">
+
+                <div class="info-producto ocultar ">
+
+                    <div class="dato-producto">
+                        <div class="detalle"><h2 style="color:white">{{promotion.name}}</h2>
+
+                            <div class="compra" style="margin-left:20px">
+
+                                <div style="width:42%;float:left;margin-left:12px" id="chico">
+                                    <h10 style="color:white;">{{promotion.description}} <br></br></h10>
+
+                                    <a style="color:white;text-decoration: underline;" href="{{promotion.link}}"
+                                       target="_blank"> Ver pagina</a>
+                                </div>
+                                <div style="float: right;">
+                                    <img class="producto-imagen" src="{{promotion.image.url}}" width="400px"
+                                         height="200px">
+                                </div>
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+
+
+{% endblock %}
