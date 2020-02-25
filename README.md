@@ -1,2 +1,2 @@
-# web-experienca-sistemas-distribuidos
+# web-experiencia-sistemas-distribuidos
 Repositorio para almacenar el proyecto para el curso sistemas distribuidos
