@@ -1,0 +1,8 @@
+Pillow==5.4.1
+Django==2.1.7
+django-ckeditor==5.6.1
+django-js-asset==1.2.2
+django-widget-tweaks==1.4.5
+pytz==2018.9
+setuptools==40.6.2
+views==0.3
